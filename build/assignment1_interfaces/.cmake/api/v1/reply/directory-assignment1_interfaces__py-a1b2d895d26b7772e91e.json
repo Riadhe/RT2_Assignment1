@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "assignment1_interfaces__py",
+		"source" : "/home/ba7rouch/Documents/RE1/ReasearchTrack2/ros2_ws/build/assignment1_interfaces/assignment1_interfaces__py"
+	}
+}
