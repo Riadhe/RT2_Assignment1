@@ -1,10 +1,9 @@
 # Research Track 2 - Assignment 1
 
-**Author:** Riadh Bahri (ID: 8335614)  
-**Course:** Research Track 2 | Master in Robotics Engineering, University of Genoa  
-**Language Used:** C++  
+**Author:** Riadh Bahri  
+**Student ID** 8335614   
 
-## 📝 Project Description
+##  Project Description
 This repository contains the first assignment for the Research Track 2 course. The objective of this project is to implement a Navigation Server and a User Interface (UI) Client using **ROS 2 Components** (`rclcpp_components`). 
 
 By utilizing components, both the server and the client are loaded into the same executable (Component Container), which allows them to communicate efficiently using **Intra-Process Communication**, significantly reducing latency and overhead.
@@ -43,15 +42,7 @@ Terminal 1: Launch the Simulation
 First, start the Gazebo world and spawn the robot:
 
 ```Bash
-
-
-source /opt/ros/jazzy/setup.bash
 source install/setup.bash
-
-# Start the simulation environment
-ros2 launch bme_gazebo_sensors world.launch.py
-
-# In the same or a new terminal, spawn the robot
 ros2 launch bme_gazebo_sensors spawn_robot.launch.py
 ```
 
@@ -59,26 +50,17 @@ Terminal 2: Start the Component Container
 Initialize the ROS 2 component container that will host our nodes:
 
 ```bash
-
-source /opt/ros/jazzy/setup.bash
 source install/setup.bash
-
 ros2 run rclcpp_components component_container
+```
+
 Terminal 3: Load the Server and Client Components
 Load the components dynamically into the running container. They will automatically connect and enable intra-process communication.
-
 ```bash
-
-source /opt/ros/jazzy/setup.bash
-source install/setup.bash
-
-# 1. Load the Navigation Server Component
 ros2 component load /ComponentManager assignment1_rt2 assignment1_rt2::NavServerComponent
-
-# 2. Load the UI Client Component
 ros2 component load /ComponentManager assignment1_rt2 assignment1_rt2::UiClientComponent
-(Note: Alternatively, you can use the provided launch file to start both components automatically: ros2 launch assignment1_rt2 assignment1.launch.py)
 ```
+
 ### How to Interact with the Robot
 Once the UiClientComponent is loaded in Terminal 3, it will prompt you for input:
 
