@@ -30,7 +30,7 @@ The workspace is divided into three packages to keep the architecture organized:
 *  This is the simulation package provided in class. It launches the Gazebo world and spawns the robot model so we can visualize and test the navigation stack.
 ---
 
-## Prerequisites & Installation
+## Prerequisites and Installation
 
 To test this project, clone the repository into a ROS 2 workspace (tested on ROS 2 Jazzy) and build it:
 ```bash
