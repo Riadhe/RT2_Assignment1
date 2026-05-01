@@ -24,7 +24,7 @@ def generate_launch_description():
             )
         ],
         output='screen',
-        emulate_tty=True # Crucial for allowing the terminal to read standard input (std::cin)
+        emulate_tty=True # Allowing the terminal to read standard input (std::cin)
     )
 
     return LaunchDescription([container])
