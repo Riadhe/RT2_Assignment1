@@ -3,17 +3,31 @@
 **Author:** Riadh Bahri  
 **Student ID** 8335614   
 
-##  Project Description
-This repository contains the first assignment for the Research Track 2 course. The objective of this project is to implement a Navigation Server and a User Interface (UI) Client using **ROS 2 Components** (`rclcpp_components`). 
+## Project Description
 
-By utilizing components, both the server and the client are loaded into the same executable (Component Container), which allows them to communicate efficiently using **Intra-Process Communication**, significantly reducing latency and overhead.
+This repository contains the implementation of the first assignment . The objective is to develop an action-based navigation stack that allows a simulated robot to move freely in Gazeboo environment.
 
-### Repository Structure
-The workspace consists of three main packages:
-1. `assignment1_interfaces`: Contains the custom ROS 2 Action definitions (`Navigate.action`).
-2. `assignment1_rt2`: The core package containing the C++ implementation of the `NavServerComponent` and `UiClientComponent`.
-3. `bme_gazebo_sensors`: The simulation environment containing the robot and the Gazebo world.
+This project implements:
+1. **A User Interface (Action Client):** A node that allows the user to set a target pose `(x, y, theta)` for the robot, or cancel the ongoing target.
+2. **An Action Server:** A node that receives the target and implements the robot navigation logic to reach it.
+3. **Component-Based Execution:** Both the User Interface (Action Client) and the Action Server are implemented as **libraries (plugins)**. They are executed dynamically within the **same container** using `rclcpp_components`.
 
+---
+
+##  Repository Structure and Modules
+
+The workspace is divided into three packages to keep the architecture modular and organized:
+
+### 1. `assignment1_interfaces`
+* This package defines the custom communication protocol. It contains the custom ROS 2 Action definition (`Navigate.action`) specifying the Goal (`x`, `y`, `theta`), the Result, and the continuous Feedback (e.g., the remaining distance to the target).
+
+### 2. `assignment1_rt2`
+*  This is the core package containing the C++ source code for the assignment. It implements the two required plugins:
+  * `NavServerComponent`: The Action Server plugin. It computes the required velocities to drive the robot towards the requested `(x, y, theta)` target based on odometry, and publishes commands to the robot.
+  * `UiClientComponent`: The Action Client plugin. It handles user input from the terminal, sends the goal to the server, prints real-time feedback, and processes the cancellation command (e.g., typing 'c + enter') to stop the robot.
+
+### 3. `bme_gazebo_sensors`
+*  This is the simulation package provided in class. It launches the Gazebo world and spawns the robot model so we can visualize and test the navigation stack.
 ---
 
 ## Prerequisites & Installation
