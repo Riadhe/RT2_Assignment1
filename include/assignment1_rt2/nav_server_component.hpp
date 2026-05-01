@@ -16,7 +16,7 @@ public:
   using Navigate = assignment1_interfaces::action::Navigate;
   using GoalHandleNavigate = rclcpp_action::ServerGoalHandle<Navigate>;
 
-  // Constructor accepting NodeOptions (required for ROS 2 Components)
+  // Constructor accepting NodeOptions 
   explicit NavServerComponent(const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
 private:
