@@ -49,7 +49,7 @@ colcon build
 source install/setup.bash
 
 ```
-### How to Run the Code
+## How to Run the Code
 To execute the simulation and load the components into the container, follow these steps using three separate terminals.
 
 Terminal 1: Launch the Simulation
@@ -75,14 +75,12 @@ ros2 component load /ComponentManager assignment1_rt2 assignment1_rt2::NavServer
 ros2 component load /ComponentManager assignment1_rt2 assignment1_rt2::UiClientComponent
 ```
 
-### How to Interact with the Robot
-Once the UiClientComponent is loaded in Terminal 3, go back to terminal 2 , it will prompt you for input:
- 
- * Enter the target coordinates as three floating-point numbers `(x y z)`. For example: `5.0 2.0 0.0`.
+## How to Interact with the Robot
 
- * The robot will start moving towards the goal, and you will see real-time distance feedback.
+Once the `UiClientComponent` is loaded from Terminal 3, **go back to Terminal 2** (where the component container is running). It will prompt you for input:
 
- * To cancel the current goal while the robot is moving, type `c` and press Enter. The robot will stop immediately.
-
+* Enter the target coordinates as three floating-point numbers `(x y theta)`. For example: `5.0 2.0 0.0`.
+* The robot will start moving towards the goal, and you will see real-time distance feedback.
+* To cancel the current goal while the robot is moving, type `c` and press Enter. The robot will stop immediately.
 
 ---
