@@ -5,7 +5,7 @@
 
 ## Project Description
 
-This repository contains the implementation of the first assignment . The objective is to develop an action-based navigation stack that allows a simulated robot to move freely in Gazeboo environment.
+This repository contains the implementation of the first assignment . The objective is to develop an action-based navigation stack that allows a simulated robot to move around in environment.
 
 This project implements:
 1. **A User Interface (Action Client):** A node that allows the user to set a target pose `(x, y, theta)` for the robot, or cancel the ongoing target.
@@ -16,7 +16,7 @@ This project implements:
 
 ##  Repository Structure and Modules
 
-The workspace is divided into three packages to keep the architecture modular and organized:
+The workspace is divided into three packages to keep the architecture organized:
 
 ### 1. `assignment1_interfaces`
 * This package defines the custom communication protocol. It contains the custom ROS 2 Action definition (`Navigate.action`) specifying the Goal (`x`, `y`, `theta`), the Result, and the continuous Feedback (e.g., the remaining distance to the target).
@@ -39,7 +39,7 @@ mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 
 # Clone the repository
-git clone [https://github.com/Riadhe/RT2_Assignment1.git](https://github.com/Riadhe/RT2_Assignment1.git) .
+git clone https://github.com/Riadhe/RT2_Assignment1.git 
 
 # Build the workspace
 cd ~/ros2_ws
@@ -53,7 +53,7 @@ source install/setup.bash
 To execute the simulation and load the components into the container, follow these steps using three separate terminals.
 
 Terminal 1: Launch the Simulation
-First, start the Gazebo world and spawn the robot:
+First, start the Gazebo world and the spawned robot:
 
 ```Bash
 source install/setup.bash
@@ -76,13 +76,13 @@ ros2 component load /ComponentManager assignment1_rt2 assignment1_rt2::UiClientC
 ```
 
 ### How to Interact with the Robot
-Once the UiClientComponent is loaded in Terminal 3, it will prompt you for input:
+Once the UiClientComponent is loaded in Terminal 3, go back to terminal 2 , it will prompt you for input:
+ 
+ * Enter the target coordinates as three floating-point numbers `(x y z)`. For example: `5.0 2.0 0.0`.
 
-Enter the target coordinates as three floating-point numbers (x y z). For example: 5.0 2.0 0.0.
+ * The robot will start moving towards the goal, and you will see real-time distance feedback.
 
-The robot will start moving towards the goal, and you will see real-time distance feedback.
-
-To cancel the current goal while the robot is moving, type c and press Enter. The robot will stop immediately.
+ * To cancel the current goal while the robot is moving, type `c` and press Enter. The robot will stop immediately.
 
 
 ---
