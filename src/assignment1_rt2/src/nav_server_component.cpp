@@ -30,9 +30,7 @@ NavServerComponent::NavServerComponent(const rclcpp::NodeOptions & options)
   RCLCPP_INFO(this->get_logger(), "Navigation Server Component Started.");
 }
 
-// ---------------------------------------------------------
 // Action Server Callbacks
-// ---------------------------------------------------------
 rclcpp_action::GoalResponse NavServerComponent::handle_goal(
   const rclcpp_action::GoalUUID & uuid,
   std::shared_ptr<const Navigate::Goal> goal)
@@ -56,9 +54,7 @@ void NavServerComponent::handle_accepted(const std::shared_ptr<GoalHandleNavigat
   std::thread(&NavServerComponent::execute, this, goal_handle).detach();
 }
 
-// ---------------------------------------------------------
-// Odometry Callback (Where is the robot currently?)
-// ---------------------------------------------------------
+// Odometry Callback 
 void NavServerComponent::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
   current_x_ = msg->pose.pose.position.x;
@@ -76,9 +72,7 @@ void NavServerComponent::odom_callback(const nav_msgs::msg::Odometry::SharedPtr 
   current_theta_ = yaw;
 }
 
-// ---------------------------------------------------------
 // Main Execution Logic
-// ---------------------------------------------------------
 void NavServerComponent::execute(const std::shared_ptr<GoalHandleNavigate> goal_handle)
 {
   RCLCPP_INFO(this->get_logger(), "Executing goal...");
@@ -160,5 +154,5 @@ void NavServerComponent::execute(const std::shared_ptr<GoalHandleNavigate> goal_
 
 }  // namespace assignment1_rt2
 
-// The macro that registers the Component (plugin) to run in a Container
+// The macro that registers the Component  to run in a Container
 RCLCPP_COMPONENTS_REGISTER_NODE(assignment1_rt2::NavServerComponent)
